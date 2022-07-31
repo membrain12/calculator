@@ -15,7 +15,7 @@ html, body {
     height: 400px;
     width: 300px;
 }
-
+                            /*display for what's typed in*/
 #display {
     border: 1px solid black;
     display: flex;
@@ -33,5 +33,31 @@ html, body {
     font-size: 30px;
     padding: 20px;
     justify-self: flex-end;
+}
+                            /*bottom of calculator*/
+#bottom {
+    display: flex;
+    height: 72%;
+    border: 1px solid green;
+}
+
+.nums {
+    border: 1px solid blue;
+    height: 100%;
+    width:75%;
+}
+
+.operations {
+    height:100%;
+    width: 25%;
+    border: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.op {
+    width: 100%;
+    background-color: #205b7a;
+    color: whitesmoke;
 }
 
