@@ -29,3 +29,28 @@ function operate(op, first, sec) {
         console.log('not recognized');
     }
 }
+
+function addDisplay(s) {
+    let text = document.querySelector('#text');
+    text.textContent = s;
+    displayValue = s;
+}
+
+let buttons = document.querySelectorAll('button');
+buttons = Array.from(buttons);
+
+buttons.forEach((btn)=> {
+    btn.addEventListener("click", (event) => {
+        text = btn.textContent;
+        addDisplay(text);
+    });
+});
+
+/*buttons.addEventListener("click", (event) => {
+    alert("butt");
+});*/
+
+let displayValue;
+let firstNumber;
+let secNumber;
+
