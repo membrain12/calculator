@@ -60,10 +60,23 @@ ops = Array.from(ops);
 ops.forEach((op)=> {
     op.addEventListener("click", (event) => {
         displayValue += op.textContent;
-        
+        //make operations clear display and store number there
+        //for use in operate function
         
     });
 });
+        //for some reason adding this section 
+        //makes other buttons not work
+let clean = document.querySelector('#clear');
+clean.addEventListener("click", (event) => {
+    clear();
+});
+
+function clear() {
+    let text = document.querySelector('#text');
+    text.textContent = '';
+    displayValue = '';
+}
 
 /*buttons.addEventListener("click", (event) => {
     alert("butt");
