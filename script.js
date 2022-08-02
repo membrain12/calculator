@@ -1,16 +1,24 @@
 function add(a, b) {
+    a = parseInt(a);
+    b = parseInt(b);
     return a + b;
 }
 
 function subtract(a, b) {
+    a = parseInt(a);
+    b = parseInt(b);
     return a - b;
 }
 
 function multiply(a, b) {
+    a = parseInt(a);
+    b = parseInt(b);
     return a * b;
 }
 
 function divide(a, b) {
+    a = parseInt(a);
+    b = parseInt(b);
     return a / b;
 }
 
@@ -32,8 +40,8 @@ function operate(op, first, sec) {
 
 function addDisplay(s) {
     let text = document.querySelector('#text');
-    text.textContent = s;
-    displayValue = s;
+    text.textContent += s;
+    displayValue += s;
 }
 
 let buttons = document.querySelectorAll('button');
@@ -46,11 +54,22 @@ buttons.forEach((btn)=> {
     });
 });
 
+let ops = document.querySelectorAll('.op');
+ops = Array.from(ops);
+
+ops.forEach((op)=> {
+    op.addEventListener("click", (event) => {
+        displayValue += op.textContent;
+        
+        
+    });
+});
+
 /*buttons.addEventListener("click", (event) => {
     alert("butt");
 });*/
 
-let displayValue;
-let firstNumber;
-let secNumber;
+let displayValue = '';
+let firstNumber = '';
+let secNumber = '';
 
