@@ -1,7 +1,7 @@
 let displayValue = '';
-let firstNumber = '2';
-let secNumber = '2';
-let operation = '+';
+let firstNumber = '';
+let secNumber = '';
+let operation = '';
 
 
 function add(a, b) {
@@ -35,9 +35,9 @@ function operate(op, first, sec) {
         return add(first, sec)
     } else if (op == '-') {
         return subtract(first, sec);
-    } else if (op == '*') {
+    } else if (op == 'x') {
         return multiply(first, sec);
-    } else if (op == '/') {
+    } else if (op == '÷') {
         return divide(first, sec);
     } else {
         console.log('not recognized');
@@ -56,20 +56,23 @@ buttons = Array.from(buttons);
 buttons.forEach((btn)=> {
     btn.addEventListener("click", (event) => {
         text = btn.textContent;
+        let display = document.querySelector('#text');
+        if (firstNumber != '') {
+            secNumber = display.textContent;
+        }
         if (text == '+' || text == '-' || text == 'x' || text == "÷") {
             firstNumber = displayValue;
             displayValue = '';
-            let display = document.querySelector('#text');
             display.textContent = displayValue;
             operation = text;
         } else if (text == '=') {
-            let answerDisplay = document.querySelector('#text');
-            secNumber = answerDisplay.textContent;
+            secNumber = display.textContent;
             console.log(firstNumber);
             console.log(secNumber);
             console.log(operation);
             let answer = operate(operation, firstNumber, secNumber);
-            answerDisplay.textContent = answer;
+            display.textContent = answer;
+            displayValue = answer;
             firstNumber = answer;
         } else {
             addDisplay(text);
