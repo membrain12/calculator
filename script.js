@@ -1,3 +1,9 @@
+let displayValue = '';
+let firstNumber = '2';
+let secNumber = '2';
+let operation = '+';
+
+
 function add(a, b) {
     a = parseInt(a);
     b = parseInt(b);
@@ -50,39 +56,57 @@ buttons = Array.from(buttons);
 buttons.forEach((btn)=> {
     btn.addEventListener("click", (event) => {
         text = btn.textContent;
-        addDisplay(text);
+        if (text == '+' || text == '-' || text == 'X' || text == "÷") {
+            firstNumber = displayValue;
+            displayValue = '';
+            let display = document.querySelector('#text');
+            display.textContent = displayValue;
+            operation = text;
+        } else if (text == '=') {
+            let answer = operate(operation, firstNumber, secNumber);
+            let answerDisplay = document.querySelector('#text');
+            answerDisplay.textContent = answer;
+        } else {
+            addDisplay(text);
+        }
+        
     });
 });
 
 let ops = document.querySelectorAll('.op');
 ops = Array.from(ops);
 
-ops.forEach((op)=> {
+/*ops.forEach((op)=> {
     op.addEventListener("click", (event) => {
-        displayValue += op.textContent;
+        //fix button event that adds operatin to display from above
+        if (firstNumber == '' && operation == '') {
+            firstNumber = displayValue;
+            displayValue = '';
+            operation = op.textContent;
+        }
         //make operations clear display and store number there
         //for use in operate function
         
     });
-});
-        //for some reason adding this section 
-        //makes other buttons not work
+});*/
+    
 let clean = document.querySelector('#clear');
 clean.addEventListener("click", (event) => {
     clear();
 });
 
+let equal = document.querySelector('#equals');
+equal.addEventListener("click", (event) => {
+    
+});
+
+
 function clear() {
     let text = document.querySelector('#text');
     text.textContent = '';
     displayValue = '';
+    firstNumber = '';
 }
 
-/*buttons.addEventListener("click", (event) => {
-    alert("butt");
-});*/
 
-let displayValue = '';
-let firstNumber = '';
-let secNumber = '';
 
