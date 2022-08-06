@@ -32,13 +32,13 @@ function operate(op, first, sec) {
     if (typeof op != 'string') {
         return;
     } else if (op == '+') {
-        add(first, sec)
+        return add(first, sec)
     } else if (op == '-') {
-        subtract(first, sec);
+        return subtract(first, sec);
     } else if (op == '*') {
-        multiply(first, sec);
+        return multiply(first, sec);
     } else if (op == '/') {
-        divide(first, sec);
+        return divide(first, sec);
     } else {
         console.log('not recognized');
     }
@@ -56,50 +56,32 @@ buttons = Array.from(buttons);
 buttons.forEach((btn)=> {
     btn.addEventListener("click", (event) => {
         text = btn.textContent;
-        if (text == '+' || text == '-' || text == 'X' || text == "÷") {
+        if (text == '+' || text == '-' || text == 'x' || text == "÷") {
             firstNumber = displayValue;
             displayValue = '';
             let display = document.querySelector('#text');
             display.textContent = displayValue;
             operation = text;
         } else if (text == '=') {
-            let answer = operate(operation, firstNumber, secNumber);
             let answerDisplay = document.querySelector('#text');
+            secNumber = answerDisplay.textContent;
+            console.log(firstNumber);
+            console.log(secNumber);
+            console.log(operation);
+            let answer = operate(operation, firstNumber, secNumber);
             answerDisplay.textContent = answer;
+            firstNumber = answer;
         } else {
             addDisplay(text);
         }
         
     });
 });
-
-let ops = document.querySelectorAll('.op');
-ops = Array.from(ops);
-
-/*ops.forEach((op)=> {
-    op.addEventListener("click", (event) => {
-        //fix button event that adds operatin to display from above
-        if (firstNumber == '' && operation == '') {
-            firstNumber = displayValue;
-            displayValue = '';
-            operation = op.textContent;
-        }
-        //make operations clear display and store number there
-        //for use in operate function
-        
-    });
-});*/
     
 let clean = document.querySelector('#clear');
 clean.addEventListener("click", (event) => {
     clear();
 });
-
-let equal = document.querySelector('#equals');
-equal.addEventListener("click", (event) => {
-    
-});
-
 
 function clear() {
     let text = document.querySelector('#text');
