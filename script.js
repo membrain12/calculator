@@ -46,8 +46,11 @@ function operate(op, first, sec) {
 
 function addDisplay(s) {
     let text = document.querySelector('#text');
-    text.textContent += s;
-    displayValue += s;
+    if (text.textContent.length < 15) {
+        text.textContent += s;
+        displayValue += s;
+    }
+    
 }
 
 let buttons = document.querySelectorAll('button');
@@ -71,6 +74,11 @@ buttons.forEach((btn)=> {
             console.log(secNumber);
             console.log(operation);
             let answer = operate(operation, firstNumber, secNumber);
+            console.log(typeof answer);
+            answer = answer.toString();
+            if (answer.length > 15) {
+                answer = round(answer);
+            }
             display.textContent = answer;
             displayValue = answer;
             firstNumber = answer;
@@ -80,6 +88,10 @@ buttons.forEach((btn)=> {
         
     });
 });
+
+function round(s) {
+    return s.slice(0, 15);
+}
     
 let clean = document.querySelector('#clear');
 clean.addEventListener("click", (event) => {
